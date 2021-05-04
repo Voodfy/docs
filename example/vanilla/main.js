@@ -74,6 +74,14 @@ function startUpload() {
     chunkSize: chunkSize,
     retryDelays: [0, 1000, 3000, 5000],
     parallelUploads: parallelUploads,
+    // Authorization token
+    // ...(token
+    // ? {
+    //   headers: {
+    //     Authorization: `Token ${token}`,
+    //   },
+    // }
+    // : {}),
     metadata: {
       filename: file.name,
       filetype: file.type
