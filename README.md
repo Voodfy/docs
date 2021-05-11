@@ -169,3 +169,168 @@ The REST API to the example app is described below.
         }
       }
     }
+
+## Add live stream
+
+### Request
+
+`POST /v1/transmissions`
+
+    curl --request POST--header 'Authorization: Token <token>' --header 'Content-Type: application/json' --data '{"title": "title", "description": "description", "poster": "poster"}' https://publish.voodfy.com/v1/transmissions
+
+### Response
+
+    HTTP/1.1 200 OK
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+    Content-Length: 35
+
+    {
+      "code": 1076,
+      "msg": "Transmission created",
+      "count": 0,
+      "next": "",
+      "previous": "",
+      "result": {
+        "transmission": {
+          "id": "609a91d4e64d1ec8e4e0c3c8",
+          "kind": "transmission",
+          "playlist": {
+            "name": "",
+            "quality": "",
+            "url": "https://stream-2.voodfy.com/hls/voodfy+1272d3a570b0064e77e3a73bb30f5280/index.m3u8",
+            "version": 0
+          },
+          "rtmpURL": "rtmp://localhost/live",
+          "srtURL": "srt://live:7000?streamid=localhost",
+          "streamKey": "voodfy+1272d3a570b0064e77e3a73bb30f5280"
+        }
+      }
+    }
+
+## Get live stream
+
+### Request
+
+`GET /v1/transmissions/:id`
+
+    curl --request GET --url http://localhost:8083/v1/transmissions/609a8d83e64d1e868f7b60bb --header 'Authorization: Token <token>'
+
+### Response
+
+    {
+      "code": 1076,
+      "msg": "ok",
+      "count": 0,
+      "next": "",
+      "previous": "",
+      "result": {
+        "transmission": {
+          "id": "609a91d4e64d1ec8e4e0c3c8",
+          "kind": "transmission",
+          "playlist": {
+            "name": "",
+            "quality": "",
+            "url": "https://stream-2.voodfy.com/hls/voodfy+1272d3a570b0064e77e3a73bb30f5280/index.m3u8",
+            "version": 0
+          },
+          "rtmpURL": "rtmp://localhost/live",
+          "srtURL": "srt://live:7000?streamid=localhost",
+          "streamKey": "voodfy+1272d3a570b0064e77e3a73bb30f5280"
+        }
+      }
+    }
+
+## Get live streams
+
+### Request
+
+`GET /v1/transmissions`
+
+    curl --request GET --url http://localhost:8083/v1/transmissions --header 'Authorization: Token <token>'
+
+### Response
+
+    {
+      "code": 1076,
+      "msg": "ok",
+      "count": 0,
+      "next": "",
+      "previous": "",
+      "result": {
+        "transmissions": [{
+          "id": "609a91d4e64d1ec8e4e0c3c8",
+          "kind": "transmission",
+          "playlist": {
+            "name": "",
+            "quality": "",
+            "url": "https://stream-2.voodfy.com/hls/voodfy+1272d3a570b0064e77e3a73bb30f5280/index.m3u8",
+            "version": 0
+          },
+          "rtmpURL": "rtmp://localhost/live",
+          "srtURL": "srt://live:7000?streamid=localhost",
+          "streamKey": "voodfy+1272d3a570b0064e77e3a73bb30f5280"
+        }]
+      }
+    }
+
+## Update live stream
+
+### Request
+
+`PATCH /v1/transmissions/:id`
+
+    curl --request PATCH --header 'Authorization: Token <token>' --header 'Content-Type: application/json' --data '{"title": "title", "description": "description", "poster": "poster"}' https://publish.voodfy.com/v1/transmissions/:id
+
+### Response
+
+    HTTP/1.1 200 OK
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+    Content-Length: 35
+
+    {
+      "code": 200,
+      "msg": "ok",
+      "count": 0,
+      "next": "",
+      "previous": "",
+      "result": {
+        "transmission": {
+          "id": "609a91d4e64d1ec8e4e0c3c8",
+          "kind": "transmission",
+          "playlist": {
+            "name": "",
+            "quality": "",
+            "url": "https://stream-2.voodfy.com/hls/voodfy+1272d3a570b0064e77e3a73bb30f5280/index.m3u8",
+            "version": 0
+          },
+          "rtmpURL": "rtmp://localhost/live",
+          "srtURL": "srt://live:7000?streamid=localhost",
+          "streamKey": "voodfy+1272d3a570b0064e77e3a73bb30f5280"
+        }
+      }
+    }
+
+## DELETE live stream
+
+### Request
+
+`DELETE /v1/transmissions/:id`
+
+    curl --request DELETE --header 'Authorization: Token <token>' --header 'Content-Type: application/json' https://publish.voodfy.com/v1/transmissions/:id 
+
+### Response
+
+    {
+      "code": 1083,
+      "msg": "Transmission deleted",
+      "count": 0,
+      "next": "",
+      "previous": "",
+      "result": {}
+    }
