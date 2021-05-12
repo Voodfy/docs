@@ -334,3 +334,104 @@ The REST API to the example app is described below.
       "previous": "",
       "result": {}
     }
+
+## Add video with CID
+
+### Request
+
+`POST /v1/videos-cid`
+
+    curl -v -i -H 'Accept: application/json' -H "Origin: https://portal.voodfy.com" -H "Content-Type: application/json" --data-raw '{"cid": "<cid>"}' https://publish.voodfy.com/v1/videos-cid
+
+### Response
+    HTTP/2 200
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+    Location: /thing/1
+    Content-Length: 36
+
+    {"code":200,"msg":"ok","count":0,"next":"","previous":"","result": {"resource": {
+      "file_id": "",
+      "filename": "<cid>",
+      "folder": "<folder>",
+      "id": "<id>",
+      "state": 0,
+      "tasks": null,
+      "tracker": "<tracker>",
+      "type": "Video"
+    },
+    "status": "adding..."}}
+
+## Get resource status
+
+### Request
+
+`GET /v1/resources/:resource_id/status`
+
+    curl --request GET --url https://publish.voodfy.com/v1/resources/:resource_id/status --header 'Accept: text/event-stream' --header 'Connection: keep-alive' --header 'Origin: https://beta.voodfy.com' --header 'Referer: https://beta.voodfy.com/' --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0'
+
+### Response
+    HTTP/2 200
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+    Location: /thing/1
+    Content-Length: 36
+
+    event:message
+    data:FINISHED
+
+## Get video by resource id
+
+### Request
+
+`GET /v1/videos?resource=<resource_id>
+
+    curl --request GET --url https://api-1.voodfy.com/v1/videos?resource=<resource_id> --header 'Origin: https://beta.voodfy.com' --header 'Referer: https://beta.voodfy.com/' --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0'
+
+### Response
+    HTTP/2 200
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+    Location: /thing/1
+    Content-Length: 36
+
+    {
+      "code": 200,
+      "msg": "ok",
+      "count": 1,
+      "next": "",
+      "previous": "",
+      "result": {
+        "videos": [
+          {
+            "access": "",
+            "cid": "<cid>",
+            "createdAt": "2021-05-12 23:28:36",
+            "description": "",
+            "duration": 0,
+            "id": "<cid>",
+            "ipfs": "<ipfs>",
+            "kind": "video",
+            "poster": "<poster>",
+            "size": 0,
+            "tags": "",
+            "thumbnailPreview": {
+              "numColumns": 83,
+              "numThumbs": 166,
+              "thumbHeight": 73,
+              "thumbWidth": 126,
+              "timeInterval": 5,
+              "url": "<thumbs_preview>"
+            },
+            "title": "<title>",
+            "tracker": "<tracker>"
+          }
+        ]
+      }
+    }
