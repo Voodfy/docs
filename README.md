@@ -178,6 +178,10 @@ The REST API to the example app is described below.
 
     curl --request POST--header 'Authorization: Token <token>' --header 'Content-Type: application/json' --data '{"title": "title", "description": "description", "poster": "poster"}' https://publish.voodfy.com/v1/transmissions
 
+### Getting the url to play the liveestream
+
+Voodfy offer an embed player to everyone play the entire streaming usnig p2p and centralized cdn cross the globe, to use that you need to access the url https://embed.voodfy.com/:live_stream_id
+
 ### Response
 
     HTTP/1.1 200 OK
@@ -334,6 +338,14 @@ The REST API to the example app is described below.
       "previous": "",
       "result": {}
     }
+
+### Record(Pro/Premium) feature Voodfy offer a record feature to user that has susbribe the PRO/Premium plan after the live stream ended to acceess you can follow the example below:
+
+curl -v https://live-cf-1.voodfy.com/hls/records+voodfy+<stream_key>.webm/index.m3u8
+
+
+Soon the content will be available into IPFS/Filecoin and can be found on https://app.voodfy.com
+
 
 ## Add video with CID
 
